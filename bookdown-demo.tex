@@ -1,0 +1,816 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{book}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+  \usepackage{amssymb}
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Analysis of Genes in the Endothelial Cluster},
+  pdfauthor={By: Darshigaa Gurumoorthy},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage{longtable,booktabs}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\usepackage{booktabs}
+\usepackage{amsthm}
+\makeatletter
+\def\thm@space@setup{%
+  \thm@preskip=8pt plus 2pt minus 4pt
+  \thm@postskip=\thm@preskip
+}
+\makeatother
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage[]{natbib}
+\bibliographystyle{apalike}
+
+\title{Analysis of Genes in the Endothelial Cluster}
+\author{By: Darshigaa Gurumoorthy}
+\date{3/19/2021}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\#Index
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+This project was done under the guidance of Dr.~Fei Zhao as a part of the Undergraduate Research Seminar.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{introduction}{%
+\chapter{Introduction}\label{introduction}}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{motive}{%
+\section{Motive}\label{motive}}
+
+The purpose of this project is to analyze the pattern of expression of genes within each sub cluster of the Endothelial cells cluster and hence arrive on the sub cluster that is associated with the reproductive tract.
+
+\hypertarget{method}{%
+\section{Method}\label{method}}
+
+The genes with an expression of around 400 (+ or - 50) was extracted from the RNA Mouse Atlas published by the SOMA (University of Washington). The data was further analyzed to determine which genes were most expressed within each cluster which were cross-referenced with MGI (Mouse Gene Expression Database) to determine which of the clusters had the most number of genes expressed in the reproductive tract region during the developmental stage.
+
+For reference of the analysis of the stages, the following table may be used:
+
+\begin{longtable}[]{@{}cc@{}}
+\toprule
+Name of Stage & Stage of Tissue\tabularnewline
+\midrule
+\endhead
+TS17 & E10-E11.25\tabularnewline
+TS19 & E11-E12.25\tabularnewline
+TS20 & E11.5-E13\tabularnewline
+TS21 & E12.5-E14\tabularnewline
+TS23 & E13.5-E15\tabularnewline
+TS24 & E15\tabularnewline
+TS24 & E16\tabularnewline
+TS25 & E17\tabularnewline
+TS26 & E18\tabularnewline
+TS27 & P0-3\tabularnewline
+TS28 & P4 - Adult\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{main-cluster}{%
+\chapter{Main Cluster}\label{main-cluster}}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+Sample Data from the Main Cluster
+
+\begin{verbatim}
+## # A tibble: 87 x 5
+##    GeneName      GeneType       MaxExpression MaxCluster SecondCluster
+##    <chr>         <chr>                  <dbl>      <dbl>         <dbl>
+##  1 Klhl4         Protein coding         279           20            38
+##  2 Emcn          Protein coding        1030           20            21
+##  3 Flt1          Protein coding        1650           20            38
+##  4 Mmrn2         Protein coding         279           20            17
+##  5 4930578C19Rik Protein coding          77.1         20            16
+##  6 Ushbp1        Protein coding         133           20            19
+##  7 Ptprb         Protein coding         621           20            17
+##  8 Robo4         Protein coding         110           20            17
+##  9 Aplnr         Protein coding         205           20            38
+## 10 Tek           Protein coding         780           20             3
+## # ... with 77 more rows
+\end{verbatim}
+
+The above table shows the first 6 rows of the data in the file.
+
+Now in the plot below, we see a plot of the expression range of the genes in the Main Cluster.
+
+\begin{verbatim}
+## Warning: package 'ggplot2' was built under R version 4.0.4
+\end{verbatim}
+
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-2-1.pdf}
+
+We now sort the above data to find the highest expressed genes.
+
+\begin{verbatim}
+## # A tibble: 87 x 5
+##    GeneName GeneType       MaxExpression MaxCluster SecondCluster
+##    <chr>    <chr>                  <dbl>      <dbl>         <dbl>
+##  1 Ptprm    Protein coding          3830         20            23
+##  2 Igf2     Protein coding          2580         20            13
+##  3 Ptprg    Protein coding          2210         20            25
+##  4 Mast4    Protein coding          2070         20            34
+##  5 Magi1    Protein coding          2070         20             9
+##  6 Flt1     Protein coding          1650         20            38
+##  7 Mest     Protein coding          1600         20             8
+##  8 Dock4    Protein coding          1470         20            33
+##  9 Ldb2     Protein coding          1430         20             1
+## 10 Sptbn1   Protein coding          1380         20            21
+## # ... with 77 more rows
+\end{verbatim}
+
+Above we see 6 of the highest referenced genes which we now cross reference these genes to find out which ones, if any are expressed in the reproductive tracts during the developmental stage.
+
+\begin{longtable}[]{@{}ccc@{}}
+\toprule
+Gene Name & Represented & If yes, At What Stage?(Max)\tabularnewline
+\midrule
+\endhead
+Ptprm & Yes & TS22, TS28\tabularnewline
+Igf2 & Yes & TS28\tabularnewline
+Ptprg & Yes & Ts28\tabularnewline
+Mast4 & Yes & TS28\tabularnewline
+Magi1 & Yes & TS28\tabularnewline
+Flt1 & Yes & TS19, TS28\tabularnewline
+\bottomrule
+\end{longtable}
+
+From the above table, we can clearly see that 4 out of the 6 genes in consideration are only visible during the TS28 stage, which means that they are not highly represented during the developmental stages.
+
+Hence, Main Cluster does not satisfy our requirements completely.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{endothelial-cluster-1}{%
+\chapter{Endothelial Cluster 1}\label{endothelial-cluster-1}}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+Sample Data from the Endothelial Tissue, Cluster 1 Data Set:
+
+\begin{verbatim}
+## # A tibble: 15 x 5
+##    GeneName GeneType       MaxExpression MaxCluster SecondCluster
+##    <chr>    <chr>                  <dbl>      <dbl>         <dbl>
+##  1 Col15a1  Protein Coding           692          1             6
+##  2 Adamts9  Protein Coding           807          1            10
+##  3 Plxnd1   Protein Coding           853          1             5
+##  4 Itga6    Protein Coding           709          1            10
+##  5 Timp3    Protein Coding           700          1             5
+##  6 Dysf     Protein Coding           695          1            10
+##  7 Stox2    Protein Coding          1490          1            11
+##  8 Ebf3     Protein Coding           693          1             8
+##  9 Phactr2  Protein Coding           500          1             6
+## 10 Tspan9   Protein Coding           634          1             6
+## 11 Pde4d    Protein Coding          2850          1             6
+## 12 Gtf21    Protein Coding           300          1            12
+## 13 Shank3   Protein Coding           963          1            10
+## 14 Mef2c    Protein Coding          1250          1            10
+## 15 Emcn     Protein Coding          1640          1            10
+\end{verbatim}
+
+Plot of the Gene v/s Max Expression:
+
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-5-1.pdf}
+
+Sorting the above data, we obtain the following genes as the highest expressed:
+
+\begin{verbatim}
+## # A tibble: 15 x 5
+##    GeneName GeneType       MaxExpression MaxCluster SecondCluster
+##    <chr>    <chr>                  <dbl>      <dbl>         <dbl>
+##  1 Pde4d    Protein Coding          2850          1             6
+##  2 Emcn     Protein Coding          1640          1            10
+##  3 Stox2    Protein Coding          1490          1            11
+##  4 Mef2c    Protein Coding          1250          1            10
+##  5 Shank3   Protein Coding           963          1            10
+##  6 Plxnd1   Protein Coding           853          1             5
+##  7 Adamts9  Protein Coding           807          1            10
+##  8 Itga6    Protein Coding           709          1            10
+##  9 Timp3    Protein Coding           700          1             5
+## 10 Dysf     Protein Coding           695          1            10
+## 11 Ebf3     Protein Coding           693          1             8
+## 12 Col15a1  Protein Coding           692          1             6
+## 13 Tspan9   Protein Coding           634          1             6
+## 14 Phactr2  Protein Coding           500          1             6
+## 15 Gtf21    Protein Coding           300          1            12
+\end{verbatim}
+
+Forming the Gene/Representation table:
+
+\begin{longtable}[]{@{}ccc@{}}
+\toprule
+Gene Name & Represented & If yes, At What Stage?(Max)\tabularnewline
+\midrule
+\endhead
+Pde4d & Yes & TS28\tabularnewline
+Emcn & Yes & TS28\tabularnewline
+Stox2 & Yes & TS21, TS28\tabularnewline
+Mef2c & Yes & TS28\tabularnewline
+Shank3 & Yes & TS28\tabularnewline
+Plxnd1 & Yes & TS28\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+From the above table, since only one of the 6 genes is expressed in the developmental stage, the genes of cluster 1 do not suit our interests.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{second-cluster}{%
+\chapter{Second Cluster}\label{second-cluster}}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+Sample Data of Genes from the Second Cluster:
+
+\begin{verbatim}
+## # A tibble: 77 x 5
+##    GeneName GeneType       MaxExpression MaxCluster SecondCluster
+##    <chr>    <chr>                  <dbl>      <dbl>         <dbl>
+##  1 Spock2   Protein Coding          1290          2             8
+##  2 Lrp8     Protein Coding          1190          2             5
+##  3 Slc7a1   Protein Coding          1410          2             5
+##  4 Ttyh2    Protein Coding           493          2             5
+##  5 lgfbp7   Protein Coding           908          2            14
+##  6 Apcdd1   Protein Coding           547          2             5
+##  7 Slc7a5   Protein Coding           821          2             5
+##  8 Slcla4   Protein Coding           490          2             5
+##  9 Nkd1     Protein Coding           429          2             5
+## 10 Gpcpd1   Protein Coding           520          2             9
+## # ... with 67 more rows
+\end{verbatim}
+
+Plot of the genes:
+
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-8-1.pdf}
+
+Ordering the genes in terms of Max Expression:
+
+\begin{verbatim}
+## # A tibble: 77 x 5
+##    GeneName GeneType       MaxExpression MaxCluster SecondCluster
+##    <chr>    <chr>                  <dbl>      <dbl>         <dbl>
+##  1 Gm42418  lincRNA                57500          2            11
+##  2 mt-Rnr2  Mt rRna                30000          2            11
+##  3 mt-Rnr1  Mt rRna                23500          2            11
+##  4 Camk1d   Protein Coding          7030          2            16
+##  5 Cdh2     Protein Coding          3630          2             5
+##  6 Flt1     Protein Coding          2920          2             6
+##  7 Sptbn1   Protein Coding          2150          2             5
+##  8 Ptprk    Protein Coding          2110          2             5
+##  9 Sema6a   Protein Coding          1710          2             5
+## 10 Myo10    Protein Coding          1670          2             6
+## # ... with 67 more rows
+\end{verbatim}
+
+The Gene/Representation table for this cluster is as follows:
+
+\begin{longtable}[]{@{}ccc@{}}
+\toprule
+Gene Name & Represented & If yes, At What Stage?(Max)\tabularnewline
+\midrule
+\endhead
+Gm42418 & No information & TS28\tabularnewline
+mt-Rnr2 & No Information & TS28\tabularnewline
+mt-Rnr1 & No Information & TS21, TS28\tabularnewline
+Camk1d & Yes & TS28\tabularnewline
+Cdh2 & Yes & TS28\tabularnewline
+Flt1 & Yes & TS28\tabularnewline
+\bottomrule
+\end{longtable}
+
+Again, as we see, all genes except for one are only represented in the adult stage. Cluster 2 does not suit our interests.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{third-cluster}{%
+\chapter{Third Cluster}\label{third-cluster}}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+Sample Data for Cluster 3:
+
+\begin{verbatim}
+## # A tibble: 29 x 5
+##    GeneName GeneType       MaxExpression MaxCluster SecondCluster
+##    <chr>    <chr>                  <dbl>      <dbl>         <dbl>
+##  1 Adgrv1   Protein Coding           980          3             8
+##  2 Pax3     Protein Coding           404          3             4
+##  3 Npas3    Protein Coding          2040          3             8
+##  4 Igdcc3   Protein Coding           478          3             4
+##  5 Fat3     Protein Coding           979          3             8
+##  6 Sox2ot   Protein Coding           643          3             8
+##  7 Grid2    Protein Coding           563          3             8
+##  8 Msi2     Protein Coding          1440          3            12
+##  9 Ezh2     Protein Coding           507          3            10
+## 10 Zfp609   Protein Coding           585          3            12
+## # ... with 19 more rows
+\end{verbatim}
+
+Plot for Cluster 3:
+
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-11-1.pdf}
+
+Ordering the genes in terms of Max Expression:
+
+\begin{verbatim}
+## # A tibble: 29 x 5
+##    GeneName      GeneType             MaxExpression MaxCluster SecondCluster
+##    <chr>         <chr>                        <dbl>      <dbl>         <dbl>
+##  1 Npas3         Protein Coding                2040          3             8
+##  2 Msi2          Protein Coding                1440          3            12
+##  3 Setbp1        Protein Coding                1440          3             8
+##  4 Adgrv1        Protein Coding                 980          3             8
+##  5 Fat3          Protein Coding                 979          3             8
+##  6 2610307P16Rik Processed Transcript           965          3             7
+##  7 Nipbl         Protein Coding                 704          3             7
+##  8 Gsk3b         Protein Coding                 682          3             8
+##  9 Zfp462        Protein Coding                 654          3             8
+## 10 Sox2ot        Protein Coding                 643          3             8
+## # ... with 19 more rows
+\end{verbatim}
+
+The Gene/Expression table is as follows:
+
+\begin{longtable}[]{@{}ccc@{}}
+\toprule
+Gene Name & Represented & If yes, At What Stage?(Max)\tabularnewline
+\midrule
+\endhead
+Npas3 & Yes & TS28\tabularnewline
+Msi2 & Yes & TS28\tabularnewline
+Setbp1 & Yes & TS28\tabularnewline
+Adgrv1 & Yes & TS28\tabularnewline
+Fat3 & Yes & TS28\tabularnewline
+2610307P16Rik & Yes & TS28\tabularnewline
+\bottomrule
+\end{longtable}
+
+As we can clearly see, the third cluster cannot be used.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{fourth-cluster}{%
+\chapter{Fourth Cluster}\label{fourth-cluster}}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+Sample Data from the fourth cluster:
+
+\begin{verbatim}
+## # A tibble: 17 x 5
+##    GeneName GeneType       MaxExpression MaxCluster SecondCluster
+##    <chr>    <chr>                  <dbl>      <dbl>         <dbl>
+##  1 Gpc6     Protein Coding          3150          4            13
+##  2 Pdzrn3   Protein Coding           597          4            13
+##  3 Tmem132c Protein Coding           455          4            13
+##  4 Efna5    Protein Coding          1290          4            13
+##  5 Gpc3     Protein Coding          1830          4            13
+##  6 Sema3a   Protein Coding           621          4            13
+##  7 Mpped2   Protein Coding           566          4            13
+##  8 Kif26b   Protein Coding           430          4            13
+##  9 Ptn      Protein Coding           525          4             3
+## 10 Nedd4    Protein Coding          1190          4             7
+## 11 Cdk14    Protein Coding           467          4             8
+## 12 Epha4    Protein Coding           418          4             3
+## 13 Fbn2     Protein Coding           765          4            10
+## 14 Grb10    Protein Coding          1200          4            13
+## 15 Arid1b   Protein Coding           625          4            10
+## 16 Tenm4    Protein Coding           565          4            13
+## 17 Ror1     Protein Coding           468          4            13
+\end{verbatim}
+
+Plot for Cluster 4:
+
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-14-1.pdf}
+
+Ordering the genes in terms of Max Expression:
+
+\begin{verbatim}
+## # A tibble: 17 x 5
+##    GeneName GeneType       MaxExpression MaxCluster SecondCluster
+##    <chr>    <chr>                  <dbl>      <dbl>         <dbl>
+##  1 Gpc6     Protein Coding          3150          4            13
+##  2 Gpc3     Protein Coding          1830          4            13
+##  3 Efna5    Protein Coding          1290          4            13
+##  4 Grb10    Protein Coding          1200          4            13
+##  5 Nedd4    Protein Coding          1190          4             7
+##  6 Fbn2     Protein Coding           765          4            10
+##  7 Arid1b   Protein Coding           625          4            10
+##  8 Sema3a   Protein Coding           621          4            13
+##  9 Pdzrn3   Protein Coding           597          4            13
+## 10 Mpped2   Protein Coding           566          4            13
+## 11 Tenm4    Protein Coding           565          4            13
+## 12 Ptn      Protein Coding           525          4             3
+## 13 Ror1     Protein Coding           468          4            13
+## 14 Cdk14    Protein Coding           467          4             8
+## 15 Tmem132c Protein Coding           455          4            13
+## 16 Kif26b   Protein Coding           430          4            13
+## 17 Epha4    Protein Coding           418          4             3
+\end{verbatim}
+
+Gene/Representation table
+
+\begin{longtable}[]{@{}ccc@{}}
+\toprule
+Gene Name & Represented & If yes, At What Stage?(Max)\tabularnewline
+\midrule
+\endhead
+Gpc6 & Yes & TS28\tabularnewline
+Gpc3 & Yes & TS21,TS28\tabularnewline
+Efna5 & Yes & TS21,22,28\tabularnewline
+Grb10 & Yes & TS28\tabularnewline
+Nedd4 & Yes & TS23,TS28\tabularnewline
+Fbn2 & Yes & TS20,TS28\tabularnewline
+\bottomrule
+\end{longtable}
+
+From the above table, we see that 5 out of the 6 genes are clearly represented during the developmental stages. Hence, the fourth cluster is a potential candidate for further analysis.
+
+Now, we take a look at how many of the genes are also represented in other clusters.
+
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-16-1.pdf}
+
+It is obvious from the above graph that the clusters 4 and 13 are closely linked. Hence, we will consider the 13th cluster shortly.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{fifth-cluster}{%
+\chapter{Fifth Cluster}\label{fifth-cluster}}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+Sample Data from the fifth cluster:
+
+\begin{verbatim}
+## # A tibble: 51 x 5
+##    GeneName GeneType       MaxExpression MaxCluster SecondCluster
+##    <chr>    <chr>                  <dbl>      <dbl>         <dbl>
+##  1 Esrrg    Protein Coding           508          5            16
+##  2 Chn2     Protein Coding           654          5            10
+##  3 Sorbs1   Protein Coding           526          5             2
+##  4 Trpc6    Protein Coding           663          5            10
+##  5 Ralgps2  Protein Coding           411          5             1
+##  6 Limch1   Protein Coding          2140          5             2
+##  7 Srgap1   Protein Coding          2100          5             2
+##  8 Dock4    Protein Coding          2790          5             2
+##  9 Myo6     Protein Coding           494          5             2
+## 10 Braf     Protein Coding           683          5             6
+## # ... with 41 more rows
+\end{verbatim}
+
+Plot for the data in the fifth cluster:
+
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-18-1.pdf}
+
+Ordering the genes in terms of Max Expression:
+
+\begin{verbatim}
+## # A tibble: 51 x 5
+##    GeneName GeneType       MaxExpression MaxCluster SecondCluster
+##    <chr>    <chr>                  <dbl>      <dbl>         <dbl>
+##  1 Ptprg    Protein Coding          5830          5             2
+##  2 Dock4    Protein Coding          2790          5             2
+##  3 Limch1   Protein Coding          2140          5             2
+##  4 Srgap1   Protein Coding          2100          5             2
+##  5 Fbxl17   Protein Coding          1440          5             6
+##  6 Mef2     Protein Coding          1370          5             2
+##  7 Jmjd1c   Protein Coding          1370          5             2
+##  8 Frmd4b   Protein Coding          1290          5             6
+##  9 Rapgef4  Protein Coding          1160          5             2
+## 10 Arhgap31 Protein Coding          1160          5            14
+## # ... with 41 more rows
+\end{verbatim}
+
+Gene/Representation Table
+
+\begin{longtable}[]{@{}ccc@{}}
+\toprule
+Gene Name & Represented & If yes, At What Stage?(Max)\tabularnewline
+\midrule
+\endhead
+Ptprg & Yes & TS28\tabularnewline
+Dock4 & Yes & TS28\tabularnewline
+Limch1 & Yes & TS28\tabularnewline
+Srgap1 & Yes & TS28\tabularnewline
+Fbxl17 & Yes & TS28\tabularnewline
+Mef2 & Yes & TS28\tabularnewline
+\bottomrule
+\end{longtable}
+
+From the above table, we see that none of the genes are represented during the development stages, hence, this cluster is not appropriate.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{sixth-cluster}{%
+\chapter{Sixth Cluster}\label{sixth-cluster}}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+Sample Data from Cluster 6:
+
+Sample Data from the fifth cluster:
+
+\begin{verbatim}
+## # A tibble: 51 x 5
+##    GeneName GeneType       MaxExpression MaxCluster SecondCluster
+##    <chr>    <chr>                  <dbl>      <dbl>         <dbl>
+##  1 Esrrg    Protein Coding           508          5            16
+##  2 Chn2     Protein Coding           654          5            10
+##  3 Sorbs1   Protein Coding           526          5             2
+##  4 Trpc6    Protein Coding           663          5            10
+##  5 Ralgps2  Protein Coding           411          5             1
+##  6 Limch1   Protein Coding          2140          5             2
+##  7 Srgap1   Protein Coding          2100          5             2
+##  8 Dock4    Protein Coding          2790          5             2
+##  9 Myo6     Protein Coding           494          5             2
+## 10 Braf     Protein Coding           683          5             6
+## # ... with 41 more rows
+\end{verbatim}
+
+Plot for the data in the sixth cluster:
+
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-21-1.pdf}
+
+Ordering the genes in terms of Max Expression:
+
+\begin{verbatim}
+## # A tibble: 99 x 5
+##    GeneName GeneType       MaxExpression MaxCluster SecondCluster
+##    <chr>    <chr>                  <dbl>      <dbl>         <dbl>
+##  1 Malat1   lincRNA                 8970          6             7
+##  2 Ptprm    Protein Coding          6600          6            10
+##  3 Mast4    Protein Coding          4610          6             7
+##  4 Tcf4     Protein Coding          4590          6             1
+##  5 Prex2    Protein Coding          3540          6             7
+##  6 Nrp1     Protein Coding          2990          6             7
+##  7 Arl15    Protein Coding          2290          6            14
+##  8 Ccser1   Protein Coding          2290          6             8
+##  9 Elmo1    Protein Coding          2220          6             1
+## 10 Col4a1   Protein Coding          2000          6             2
+## # ... with 89 more rows
+\end{verbatim}
+
+Gene/Representation Table
+
+\begin{longtable}[]{@{}ccc@{}}
+\toprule
+Gene Name & Represented & If yes, At What Stage?(Max)\tabularnewline
+\midrule
+\endhead
+Malat1 & Yes & TS28\tabularnewline
+Ptprm & Yes & TS22,23,28\tabularnewline
+Mast4 & Yes & TS28\tabularnewline
+Tcf4 & Yes & TS28\tabularnewline
+Prex2 & Yes & TS28\tabularnewline
+Nrp1 & Yes & TS28\tabularnewline
+\bottomrule
+\end{longtable}
+
+We see that only the Ptprm gene is expressed in the developmental stages. Hence, the sixth cluster does not satisfy our requirements.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{seventh-cluster}{%
+\chapter{Seventh Cluster}\label{seventh-cluster}}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+Sample Data from the seventh cluster:
+
+\begin{verbatim}
+## # A tibble: 62 x 5
+##    GeneName GeneType       MaxExpression MaxCluster SecondCluster
+##    <chr>    <chr>                  <dbl>      <dbl>         <dbl>
+##  1 Eln      Protein Coding          1050          7             8
+##  2 Pde3a    Protein Coding          2100          7            12
+##  3 Fbln5    Protein Coding           408          7            11
+##  4 Lama3    Protein Coding           483          7             6
+##  5 Pcsk5    Protein Coding          1680          7             6
+##  6 Vwf      Protein Coding           974          7             6
+##  7 Camk2d   Protein Coding          1020          7             6
+##  8 Prdm16   Protein Coding           681          7             6
+##  9 Calcrl   Protein Coding          3930          7            14
+## 10 Dennd5b  Protein Coding           943          7            15
+## # ... with 52 more rows
+\end{verbatim}
+
+Plot for Cluster 7:
+
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-24-1.pdf}
+
+Ordering the genes in terms of Max Expression:
+
+\begin{verbatim}
+## # A tibble: 62 x 5
+##    GeneName GeneType       MaxExpression MaxCluster SecondCluster
+##    <chr>    <chr>                  <dbl>      <dbl>         <dbl>
+##  1 Mecom    Protein Coding          6060          7             6
+##  2 Calcrl   Protein Coding          3930          7            14
+##  3 Pde3a    Protein Coding          2100          7            12
+##  4 Pbx1     Protein Coding          2010          7             4
+##  5 Sox6     Protein Coding          1790          7             6
+##  6 Pcsk5    Protein Coding          1680          7             6
+##  7 Ptprb    Protein Coding          1640          7             6
+##  8 Vegfc    Protein Coding          1540          7             6
+##  9 Mllt3    Protein Coding          1490          7            16
+## 10 Tek      Protein Coding          1400          7            12
+## # ... with 52 more rows
+\end{verbatim}
+
+Gene/Representation Table
+
+\begin{longtable}[]{@{}ccc@{}}
+\toprule
+Gene Name & Represented & If yes, At What Stage?(Max)\tabularnewline
+\midrule
+\endhead
+Mecom & Yes & TS20,22*,28\tabularnewline
+Calcrl & Yes & TS28\tabularnewline
+Pde3a & Yes & TS22*, TS28\tabularnewline
+Pbx1 & Yes & TS19,22,23,28\tabularnewline
+Sox6 & Yes & TS28\tabularnewline
+Pcsk5 & Yes & TS28\tabularnewline
+\bottomrule
+\end{longtable}
+
+The results of the above table are ambiguous. We shall not take this cluster into consideration for the time being.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{eighth-cluster}{%
+\chapter{Eighth Cluster}\label{eighth-cluster}}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+Sample Data from the eighth cluster:
+
+\begin{verbatim}
+## # A tibble: 78 x 5
+##    GeneName GeneType       MaxExpression MaxCluster SecondCluster
+##    <chr>    <chr>                  <dbl>      <dbl>         <dbl>
+##  1 Nxph1    Protein Coding           500          8             3
+##  2 Celf4    Protein Coding           689          8             3
+##  3 Myt1l    Protein Coding           577          8             3
+##  4 Nrxn1    Protein Coding          1570          8            13
+##  5 Nrg3     Protein Coding          1120          8            13
+##  6 Gm26871  Protein Coding           488          8             3
+##  7 Anks1b   Protein Coding           529          8             3
+##  8 Rbfox1   Protein Coding           755          8            13
+##  9 Fam155a  Protein Coding           971          8            13
+## 10 Xkr4     Protein Coding           423          8             3
+## # ... with 68 more rows
+\end{verbatim}
+
+Plot for Cluster 8:
+
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-27-1.pdf}
+
+Ordering the genes in terms of Max Expression:
+
+\begin{verbatim}
+## # A tibble: 78 x 5
+##    GeneName GeneType       MaxExpression MaxCluster SecondCluster
+##    <chr>    <chr>                  <dbl>      <dbl>         <dbl>
+##  1 Dcc      Protein Coding          5240          8             3
+##  2 Auts2    Protein Coding          4400          8             6
+##  3 Nrxn3    Protein Coding          4100          8            12
+##  4 Ctnna2   Protein Coding          2890          8             3
+##  5 Ptprd    Protein Coding          2150          8            13
+##  6 Lsamp    Protein Coding          1820          8             3
+##  7 Ank3     Protein Coding          1790          8             4
+##  8 Pcdh9    Protein Coding          1630          8            13
+##  9 Nrxn1    Protein Coding          1570          8            13
+## 10 Tenm2    Protein Coding          1450          8             3
+## # ... with 68 more rows
+\end{verbatim}
+
+\begin{longtable}[]{@{}ccc@{}}
+\toprule
+Gene Name & Represented & If yes, At What Stage?(Max)\tabularnewline
+\midrule
+\endhead
+Dcc & Yes & TS21,TS28\tabularnewline
+Auts2 & Yes & TS22,TS28\tabularnewline
+Nrxn3 & Yes & TS28\tabularnewline
+Ctnna2 & Yes & TS22,23,28\tabularnewline
+Ptprd & Yes & TS23,TS28\tabularnewline
+Lsamp & Yes & TS28\tabularnewline
+\bottomrule
+\end{longtable}
+
+4 out of the 6 genes are represented in the developmental stage. Therefore, we may be able to use the eighth cluster to perform further analysis.
+
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-29-1.pdf}
+
+From the above graph, we can observe that the 8\^{}th cluster is closely linked with the 2\^{}nd and the 13\^{}th cluster, we can conclude that there is a high possibility that the four clusters are closely linked to the reproductive tract, however previous analysis revealed that the 2\^{}nd cluster is not associated with the reproductive tract, hence the three clusters that remain under our consideration are the 4\^{}th, 8\^{}th and the 13\^{}th cluster.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{ninth-cluster}{%
+\chapter{Ninth Cluster}\label{ninth-cluster}}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+Sample Data from the Ninth Cluster:
+
+\begin{verbatim}
+## # A tibble: 36 x 5
+##    GeneName GeneType       MaxExpression MaxCluster SecondCluster
+##    <chr>    <chr>                  <dbl>      <dbl>         <dbl>
+##  1 Sptb     Protein Coding           579          9             8
+##  2 Slc25a21 Protein Coding          1490          9             3
+##  3 Kel      Protein Coding           548          9             8
+##  4 Slc4a1   Protein Coding          1070          9             8
+##  5 Ank1     Protein Coding           771          9             8
+##  6 Abcb10   Protein Coding           465          9            12
+##  7 Hbb-bh1  Protein Coding          2210          9             5
+##  8 Hba-x    Protein Coding          4250          9             7
+##  9 Snca     Protein Coding           640          9            16
+## 10 Hbb-y    Protein Coding          7790          9             2
+## # ... with 26 more rows
+\end{verbatim}
+
+  \bibliography{book.bib,packages.bib}
+
+\end{document}

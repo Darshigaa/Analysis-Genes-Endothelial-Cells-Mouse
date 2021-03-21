@@ -1,0 +1,457 @@
+---
+title: "Analysis of Genes in the Endothelial Cluster"
+author: "By: Darshigaa Gurumoorthy"
+date: "3/19/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+bookdown::html_book()
+```
+
+------------------------------------------------------------------------
+
+# Introduction
+
+------------------------------------------------------------------------
+
+## Motive
+
+The purpose of this project is to analyze the pattern of expression of genes within each sub cluster of the Endothelial cells cluster and hence arrive on the sub cluster that is associated with the reproductive tract.
+
+## Method
+
+The genes with an expression of around 400 (+ or - 50) was extracted from the RNA Mouse Atlas published by the SOMA (University of Washington). The data was further analyzed to determine which genes were most expressed within each cluster which were cross-referenced with MGI (Mouse Gene Expression Database) to determine which of the clusters had the most number of genes expressed in the reproductive tract region during the developmental stage.
+
+For reference of the analysis of the stages, the following table may be used:
+
+| Name of Stage | Stage of Tissue |
+|:-------------:|:---------------:|
+|     TS17      |   E10-E11.25    |
+|     TS19      |   E11-E12.25    |
+|     TS20      |    E11.5-E13    |
+|     TS21      |    E12.5-E14    |
+|     TS23      |    E13.5-E15    |
+|     TS24      |       E15       |
+|     TS24      |       E16       |
+|     TS25      |       E17       |
+|     TS26      |       E18       |
+|     TS27      |      P0-3       |
+|     TS28      |   P4 - Adult    |
+
+------------------------------------------------------------------------
+
+------------------------------------------------------------------------
+
+# Main Cluster
+
+------------------------------------------------------------------------
+
+Sample Data from the Main Cluster
+
+```{r, echo=FALSE}
+main_cluster = readxl::read_xlsx('EndothelialMainCluster.xlsx')
+
+main_cluster
+```
+
+The above table shows the first 6 rows of the data in the file.
+
+Now in the plot below, we see a plot of the expression range of the genes in the Main Cluster.
+
+```{r, echo=FALSE}
+library(ggplot2)
+ggplot(main_cluster) + geom_point(aes(GeneName, MaxExpression))+
+  scale_x_discrete(guide = guide_axis(angle = 90))+theme_classic()
+```
+
+We now sort the above data to find the highest expressed genes.
+
+```{r, echo=FALSE}
+attach(main_cluster)
+main_cluster_sorted <- main_cluster[order(-MaxExpression), ]
+main_cluster_sorted
+```
+
+Above we see 6 of the highest referenced genes which we now cross reference these genes to find out which ones, if any are expressed in the reproductive tracts during the developmental stage.
+
+| Gene Name | Represented | If yes, At What Stage?(Max) |
+|:---------:|:-----------:|:---------------------------:|
+|   Ptprm   |     Yes     |         TS22, TS28          |
+|   Igf2    |     Yes     |            TS28             |
+|   Ptprg   |     Yes     |            Ts28             |
+|   Mast4   |     Yes     |            TS28             |
+|   Magi1   |     Yes     |            TS28             |
+|   Flt1    |     Yes     |         TS19, TS28          |
+
+From the above table, we can clearly see that 4 out of the 6 genes in consideration are only visible during the TS28 stage, which means that they are not highly represented during the developmental stages.
+
+Hence, Main Cluster does not satisfy our requirements completely.
+
+------------------------------------------------------------------------
+
+# Endothelial Cluster 1
+
+------------------------------------------------------------------------
+
+Sample Data from the Endothelial Tissue, Cluster 1 Data Set:
+
+```{r, echo=FALSE}
+first_cluster = readxl::read_xlsx('EndothelialCluster1.xlsx')
+first_cluster
+```
+
+Plot of the Gene v/s Max Expression:
+
+```{r echo=FALSE}
+ggplot(first_cluster) + geom_point(aes(GeneName, MaxExpression))+theme_classic()
+
+```
+
+Sorting the above data, we obtain the following genes as the highest expressed:
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+attach(first_cluster)
+first_cluster_sorted <- first_cluster[order(-MaxExpression), ]
+first_cluster_sorted
+```
+
+Forming the Gene/Representation table:
+
+| Gene Name | Represented | If yes, At What Stage?(Max) |
+|:---------:|:-----------:|:---------------------------:|
+|   Pde4d   |     Yes     |            TS28             |
+|   Emcn    |     Yes     |            TS28             |
+|   Stox2   |     Yes     |         TS21, TS28          |
+|   Mef2c   |     Yes     |            TS28             |
+|  Shank3   |     Yes     |            TS28             |
+|  Plxnd1   |     Yes     |            TS28             |
+
+------------------------------------------------------------------------
+
+From the above table, since only one of the 6 genes is expressed in the developmental stage, the genes of cluster 1 do not suit our interests.
+
+------------------------------------------------------------------------
+
+# Second Cluster
+
+------------------------------------------------------------------------
+
+Sample Data of Genes from the Second Cluster:
+
+```{r, echo=FALSE}
+
+second_cluster <- readxl::read_xlsx('EndothelialCluster2.xlsx')
+second_cluster[1:5]
+```
+
+Plot of the genes:
+
+```{r, echo=FALSE}
+library(ggplot2)
+ggplot(second_cluster) + geom_point(aes(GeneName, MaxExpression))+
+  scale_x_discrete(guide = guide_axis(angle = 90))+theme_classic()
+```
+
+Ordering the genes in terms of Max Expression:
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+attach(second_cluster)
+second_cluster_sorted <- second_cluster[order(-MaxExpression), ]
+second_cluster_sorted[1:5]
+```
+
+The Gene/Representation table for this cluster is as follows:
+
+| Gene Name |  Represented   | If yes, At What Stage?(Max) |
+|:---------:|:--------------:|:---------------------------:|
+|  Gm42418  | No information |            TS28             |
+|  mt-Rnr2  | No Information |            TS28             |
+|  mt-Rnr1  | No Information |         TS21, TS28          |
+|  Camk1d   |      Yes       |            TS28             |
+|   Cdh2    |      Yes       |            TS28             |
+|   Flt1    |      Yes       |            TS28             |
+
+Again, as we see, all genes except for one are only represented in the adult stage. Cluster 2 does not suit our interests.
+
+------------------------------------------------------------------------
+
+# Third Cluster
+
+------------------------------------------------------------------------
+
+Sample Data for Cluster 3:
+
+```{r, echo=FALSE}
+
+third_cluster <- readxl::read_xlsx('EndothelialCluster3.xlsx')
+third_cluster
+```
+
+Plot for Cluster 3:
+
+```{r, echo=FALSE}
+library(ggplot2)
+ggplot(third_cluster) + geom_point(aes(GeneName, MaxExpression))+
+  scale_x_discrete(guide = guide_axis(angle = 90))+theme_classic()
+```
+
+Ordering the genes in terms of Max Expression:
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+attach(third_cluster)
+third_cluster_sorted <- third_cluster[order(-MaxExpression), ]
+third_cluster_sorted[1:5]
+```
+
+The Gene/Expression table is as follows:
+
+|   Gene Name   | Represented | If yes, At What Stage?(Max) |
+|:-------------:|:-----------:|:---------------------------:|
+|     Npas3     |     Yes     |            TS28             |
+|     Msi2      |     Yes     |            TS28             |
+|    Setbp1     |     Yes     |            TS28             |
+|    Adgrv1     |     Yes     |            TS28             |
+|     Fat3      |     Yes     |            TS28             |
+| 2610307P16Rik |     Yes     |            TS28             |
+
+As we can clearly see, the third cluster cannot be used.
+
+------------------------------------------------------------------------
+
+# Fourth Cluster
+
+------------------------------------------------------------------------
+
+Sample Data from the fourth cluster:
+
+```{r, echo=FALSE}
+fourth_cluster = readxl::read_xlsx('EndothelialCluster4.xlsx')
+fourth_cluster
+```
+
+Plot for Cluster 4:
+
+```{r, echo=FALSE}
+library(ggplot2)
+ggplot(fourth_cluster) + geom_point(aes(GeneName, MaxExpression))+
+  scale_x_discrete(guide = guide_axis(angle = 90))+theme_classic()
+```
+
+Ordering the genes in terms of Max Expression:
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+attach(fourth_cluster)
+fourth_cluster_sorted <- fourth_cluster[order(-MaxExpression), ]
+fourth_cluster_sorted[1:5]
+```
+
+Gene/Representation table
+
+| Gene Name | Represented | If yes, At What Stage?(Max) |
+|:---------:|:-----------:|:---------------------------:|
+|   Gpc6    |     Yes     |            TS28             |
+|   Gpc3    |     Yes     |          TS21,TS28          |
+|   Efna5   |     Yes     |         TS21,22,28          |
+|   Grb10   |     Yes     |            TS28             |
+|   Nedd4   |     Yes     |          TS23,TS28          |
+|   Fbn2    |     Yes     |          TS20,TS28          |
+
+From the above table, we see that 5 out of the 6 genes are clearly represented during the developmental stages. Hence, the fourth cluster is a potential candidate for further analysis.
+
+Now, we take a look at how many of the genes are also represented in other clusters.
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+ggplot(fourth_cluster)+geom_bar(aes(SecondCluster), color =  "pink", fill= "pink")+theme_classic()
+
+```
+
+It is obvious from the above graph that the clusters 4 and 13 are closely linked. Hence, we will consider the 13th cluster shortly.
+
+------------------------------------------------------------------------
+
+# Fifth Cluster
+
+------------------------------------------------------------------------
+
+Sample Data from the fifth cluster:
+
+```{r, echo=FALSE}
+fifth_cluster = readxl::read_xlsx('EndothelialCluster5.xlsx')
+fifth_cluster
+```
+
+Plot for the data in the fifth cluster:
+
+```{r, echo=FALSE}
+library(ggplot2)
+ggplot(fifth_cluster) + geom_point(aes(GeneName, MaxExpression))+
+  scale_x_discrete(guide = guide_axis(angle = 90))+theme_classic()
+```
+
+Ordering the genes in terms of Max Expression:
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+attach(fifth_cluster)
+fifth_cluster_sorted <- fifth_cluster[order(-MaxExpression), ]
+fifth_cluster_sorted[1:5]
+```
+
+Gene/Representation Table
+
+| Gene Name | Represented | If yes, At What Stage?(Max) |
+|:---------:|:-----------:|:---------------------------:|
+|   Ptprg   |     Yes     |            TS28             |
+|   Dock4   |     Yes     |            TS28             |
+|  Limch1   |     Yes     |            TS28             |
+|  Srgap1   |     Yes     |            TS28             |
+|  Fbxl17   |     Yes     |            TS28             |
+|   Mef2    |     Yes     |            TS28             |
+
+From the above table, we see that none of the genes are represented during the development stages, hence, this cluster is not appropriate.
+
+------------------------------------------------------------------------
+
+# Sixth Cluster
+
+------------------------------------------------------------------------
+
+Sample Data from Cluster 6:
+
+Sample Data from the fifth cluster:
+
+```{r, echo=FALSE}
+sixth_cluster = readxl::read_xlsx('EndothelialCluster6.xlsx')
+fifth_cluster
+```
+
+Plot for the data in the sixth cluster:
+
+```{r, echo=FALSE}
+library(ggplot2)
+ggplot(sixth_cluster) + geom_point(aes(GeneName, MaxExpression))+
+  scale_x_discrete(guide = guide_axis(angle = 90))+theme_classic()
+```
+
+Ordering the genes in terms of Max Expression:
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+attach(sixth_cluster)
+sixth_cluster_sorted <- sixth_cluster[order(-MaxExpression), ]
+sixth_cluster_sorted[1:5]
+```
+
+Gene/Representation Table
+
+| Gene Name | Represented | If yes, At What Stage?(Max) |
+|:---------:|:-----------:|:---------------------------:|
+|  Malat1   |     Yes     |            TS28             |
+|   Ptprm   |     Yes     |         TS22,23,28          |
+|   Mast4   |     Yes     |            TS28             |
+|   Tcf4    |     Yes     |            TS28             |
+|   Prex2   |     Yes     |            TS28             |
+|   Nrp1    |     Yes     |            TS28             |
+
+We see that only the Ptprm gene is expressed in the developmental stages. Hence, the sixth cluster does not satisfy our requirements.
+
+------------------------------------------------------------------------
+
+# Seventh Cluster
+
+------------------------------------------------------------------------
+
+Sample Data from the seventh cluster:
+
+```{r, echo=FALSE}
+seventh_cluster = readxl::read_xlsx('EndothelialCluster7.xlsx')
+seventh_cluster
+```
+
+Plot for Cluster 7:
+
+```{r, echo=FALSE}
+library(ggplot2)
+ggplot(seventh_cluster) + geom_point(aes(GeneName, MaxExpression))+
+  scale_x_discrete(guide = guide_axis(angle = 90))+theme_classic()
+```
+
+Ordering the genes in terms of Max Expression:
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+attach(seventh_cluster)
+seventh_cluster_sorted <- seventh_cluster[order(-MaxExpression), ]
+seventh_cluster_sorted[1:5]
+```
+Gene/Representation Table
+
+|Gene Name |Represented|If yes, At What Stage?(Max)|
+|:--------:|:---------:|:-------------------------:|
+|Mecom|Yes|TS20,22*,28|
+|Calcrl|Yes|TS28|
+|Pde3a|Yes|TS22*, TS28|
+|Pbx1|Yes|TS19,22,23,28|
+|Sox6|Yes|TS28|
+|Pcsk5|Yes|TS28|
+
+The results of the above table are ambiguous. We shall not take this cluster into consideration for the time being.
+
+***
+
+# Eighth Cluster
+
+***
+
+Sample Data from the eighth cluster:
+
+```{r, echo=FALSE}
+eighth_cluster = readxl::read_xlsx('EndothelialCluster8.xlsx')
+eighth_cluster
+```
+
+Plot for Cluster 8:
+
+```{r, echo=FALSE}
+library(ggplot2)
+ggplot(eighth_cluster) + geom_point(aes(GeneName, MaxExpression))+
+  scale_x_discrete(guide = guide_axis(angle = 90))+theme_classic()
+```
+
+Ordering the genes in terms of Max Expression:
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+attach(eighth_cluster)
+eighth_cluster_sorted <- eighth_cluster[order(-MaxExpression), ]
+eighth_cluster_sorted[1:5]
+```
+|Gene Name |Represented|If yes, At What Stage?(Max)|
+|:--------:|:---------:|:-------------------------:|
+|Dcc|Yes|TS21,TS28|
+|Auts2|Yes|TS22,TS28|
+|Nrxn3|Yes|TS28|
+|Ctnna2|Yes|TS22,23,28|
+|Ptprd|Yes|TS23,TS28|
+|Lsamp|Yes|TS28|
+
+4 out of the 6 genes are represented in the developmental stage. Therefore, we may be able to use the eighth cluster to perform further analysis.
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+ggplot(eighth_cluster)+geom_bar(aes(SecondCluster), color =  "pink", fill= "pink")+theme_classic()
+
+```
+
+From the above graph, we can observe that the 8^th cluster is closely linked with the 2^nd and the 13^th cluster, we can conclude that there is a high possibility that the four clusters are closely linked to the reproductive tract, however previous analysis revealed that the 2^nd cluster is not associated with the reproductive tract, hence the three clusters that remain under our consideration are the 4^th, 8^th and the 13^th cluster.
+
+***
+
+# Ninth Cluster
+
+***
+
+Sample Data from the Ninth Cluster:
+
+```{r, echo=FALSE}
+ninth_cluster = readxl::read_xlsx('EndothelialCluster9.xlsx')
+
+ninth_cluster
+```
