@@ -440,8 +440,7 @@ ggplot(eighth_cluster)+geom_bar(aes(SecondCluster), color =  "pink", fill= "pink
 
 ```
 
-From the above graph, we can observe that the 8^th cluster is closely linked with the 2^nd and the 13^th cluster, we can conclude that there is a high possibility that the four clusters are closely linked to the reproductive tract, however previous analysis revealed that the 2^nd cluster is not associated with the reproductive tract, hence the three clusters that remain under our consideration are the 4^th, 8^th and the 13^th cluster.
-
+From the above graph, we can observe that the eighth cluster is closely linked with the second and the thirteenth cluster, we can conclude that there is a high possibility that the four clusters are closely linked to the reproductive tract, however previous analysis revealed that the second cluster is not associated with the reproductive tract, hence the three clusters that remain under our consideration are the fourth, eighth and the thirteenth cluster.
 ***
 
 # Ninth Cluster
@@ -455,3 +454,110 @@ ninth_cluster = readxl::read_xlsx('EndothelialCluster9.xlsx')
 
 ninth_cluster
 ```
+Plot for the genes in the ninth cluster:
+
+```{r, echo=FALSE}
+library(ggplot2)
+ggplot(ninth_cluster) + geom_point(aes(GeneName, MaxExpression))+
+  scale_x_discrete(guide = guide_axis(angle = 90))+theme_classic()
+```
+
+Ordering the genes on the basis of Max Expression:
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+attach(ninth_cluster)
+ninth_cluster_sorted <- ninth_cluster[order(-MaxExpression), ]
+ninth_cluster_sorted[1:5]
+```
+|Gene Name |Represented|If yes, At What Stage?(Max)|
+|:--------:|:---------:|:-------------------------:|
+|Hbb-y|Yes|TS21|
+|Hba-x|No|-|
+|Hbb-bh1|Yes|TS21|
+|Slc25a1|Yes|TS28|
+|March3|Yes|TS28|
+|Epb41|Yes|TS28|
+
+As we see in the above table, 4 out of 6 genes are not expressed during the developmental stages of the reproductive tract, hence we will not take this cluster into consideration.
+
+***
+
+# Tenth Cluster
+
+***
+
+Sample Data from the tenth Cluster:
+
+```{r, echo=FALSE}
+tenth_cluster = readxl::read_xlsx('EndothelialCluster10.xlsx')
+
+tenth_cluster
+```
+
+Plot for the genes in the tenth cluster:
+
+```{r, echo=FALSE}
+library(ggplot2)
+ggplot(tenth_cluster) + geom_point(aes(GeneName, MaxExpression))+
+  scale_x_discrete(guide = guide_axis(angle = 90))+theme_classic()
+```
+
+Ordering the genes on the basis of Max Expression:
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+attach(tenth_cluster)
+tenth_cluster_sorted <- tenth_cluster[order(-MaxExpression), ]
+tenth_cluster_sorted[1:5]
+```
+
+Gene/Representation Table:
+
+|Gene Name |Represented|If yes, At What Stage?(Max)|
+|:--------:|:---------:|:-------------------------:|
+|Mest|Yes|TS21,TS28|
+|Hapln1|Yes|TS21,TS28|
+|Lpp|Yes|TS28|
+|Etv6|Yes|TS22,TS28|
+|Vav3|Yes|TS28|
+|Tcf12|Yes|TS23,TS28|
+
+Since, 4 out of 6 genes are represented in the developmental stages, we can perform further analysis on this cluster.
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+ggplot(tenth_cluster)+geom_bar(aes(SecondCluster), color =  "pink", fill= "pink")+theme_classic()
+
+```
+From the above graph, we observe that the tenth cluster is linked closely with the fifth cluster. But according to our previous analysis of cluster 5, we concluded that the fifth cluster is not associated with the reproductive tract. The cluster that hence remain under consideration are the fourth, eighth and thirteenth cluster.
+
+***
+
+# Eleventh Cluster
+
+***
+
+Sample data from the Eleventh Cluster
+
+```{r}
+eleventh_cluster <- readxl::read_xlsx('EndothelialCluster11.xlsx')
+eleventh_cluster
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
