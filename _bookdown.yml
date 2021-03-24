@@ -1,5 +1,7 @@
 book_filename: "bookdown-demo"
 language:
   ui:
-    chapter_name: "Chapter "
+    chapter_name: ""
 delete_merged_file: true
+edit: https://github.com/Darshigaa/EndothelialCells-GenesAnalysis/edit/master/%s
+view: https://github.com/Darshigaa/EndothelialCells-GenesAnalysis/blob/master/%s
